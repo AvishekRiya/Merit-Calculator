@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Merit Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background-color: #eef;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+    }
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function calculateMerit() {
+      const totalMarks = parseFloat(document.getElementById("total").value) || 0;
+      const physics = parseFloat(document.getElementById("physics").value) || 0;
+      const chemistry = parseFloat(document.getElementById("chemistry").value) || 0;
+
+      const totalScore50 = (totalMarks / 700) * 50;
+      const subjectScore50 = ((physics + chemistry) / 200) * 50;
+
+      const meritScore = totalScore50 + subjectScore50;
+
+      document.getElementById("result").innerText = `Merit Score: ${meritScore.toFixed(2)} / 100`;
+    }
+  </script>
+</head>
+<body>
+  <h2>Merit Score Calculator</h2>
+  <label>Total Marks (out of 700):
+    <input type="number" id="total" oninput="calculateMerit()">
+  </label>
+  <label>Physics Marks (out of 100):
+    <input type="number" id="physics" oninput="calculateMerit()">
+  </label>
+  <label>Chemistry Marks (out of 100):
+    <input type="number" id="chemistry" oninput="calculateMerit()">
+  </label>
+
+  <div id="result">Merit Score: 0.00 / 100</div>
+</body>
+</html>
